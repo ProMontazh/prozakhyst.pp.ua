@@ -245,7 +245,29 @@ header .logo svg {
     border: 1px solid #444;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
+/* ПЛАНШЕТ ГОРИЗОНТАЛЬНЫЙ — 4 в ряд */
+@media (max-width: 1024px) {
+    .category-card {
+        flex: 0 0 calc(25% - 12px);
+        max-width: calc(25% - 12px);
+    }
+}
 
+/* ПЛАНШЕТ ВЕРТИКАЛЬНЫЙ — 3 в ряд */
+@media (max-width: 768px) {
+    .category-card {
+        flex: 0 0 calc(33.333% - 10px);
+        max-width: calc(33.333% - 10px);
+    }
+}
+
+/* ТЕЛЕФОН — 2 в ряд */
+@media (max-width: 480px) {
+    .category-card {
+        flex: 0 0 calc(50% - 8px);
+        max-width: calc(50% - 8px);
+    }
+}
 .category-card:hover {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     border-color: #800000;
@@ -1567,19 +1589,10 @@ body.slide-in-right {
         display: flex !important;
     }
 
-    .category-card {
-        flex: 1 1 calc(50% - 10px) !important;
-        max-width: calc(50% - 10px) !important;
-    }
-
+   
     #categories {
         padding: 90px 10px 25px 10px;
         gap: 8px;
-    }
-
-    .category-card {
-        flex: 1 1 calc(50% - 12px);
-        max-width: calc(50% - 12px);
     }
 
     .products-container {
