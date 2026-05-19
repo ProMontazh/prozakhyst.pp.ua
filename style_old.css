@@ -184,10 +184,10 @@ header .logo svg {
 .nav-link {
     color: #ccc;
     text-decoration: none;
-    padding: 8px 14px;
+    padding: 6px 12px;
     border-radius: 4px;
     transition: all 0.3s ease;
-    font-size: 0.65em;          /* шрифт в категориях */
+    font-size: 0.7em;          /* шрифт в категориях */
     white-space: nowrap;
     background: transparent;
     border: 1px solid transparent;
