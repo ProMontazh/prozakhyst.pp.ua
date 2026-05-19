@@ -187,7 +187,7 @@ header .logo svg {
     padding: 6px 8px;
     border-radius: 4px;
     transition: all 0.3s ease;
-    font-size: 0.77em;          /* шрифт в категориях */
+    font-size: 0.8em;          /* шрифт в категориях */
     white-space: nowrap;
     background: transparent;
     border: 1px solid transparent;
