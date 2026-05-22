@@ -10,6 +10,8 @@ const CATEGORY_MAP = {
     khuby: { label: 'Хаби, модулі Ajax', icon: 'images/hub_white_1.png' },
     vnutrishni_datchyky: { label: 'Внутрішня охорона Ajax', icon: 'images/protect_indoor_1.png' },
     zovnishni_datchyky: { label: 'Зовнішня охорона Ajax', icon: 'images/protect_outdoor_1.png' },
+    prystroi_keruvannia: { label: 'Клавіатури та брелоки Ajax', icon: 'images/prystroi_keruvannia_1.png' },
+    avtomatyzatsiia: { label: 'Автоматизація Ajax', icon: 'images/avtomat_1.png' },
     zakhyst_vid_potopu: { label: 'Захист від потопу Ajax', icon: 'images/waterstop_1.png' },
     pozhezhna_bezpeka: { label: 'Захист від пожежі Ajax', icon: 'images/fire_1.png' },
     other: { label: 'Інше', icon: 'favicon.svg' }
@@ -45,6 +47,8 @@ const CATEGORY_SLIDES = [
     { file: 'khuby.html', key: 'khuby' },
     { file: 'vnutrishni_datchyky.html', key: 'vnutrishni_datchyky' },
     { file: 'zovnishni_datchyky.html', key: 'zovnishni_datchyky' },
+    { file: 'prystroi_keruvannia.html', key: 'prystroi_keruvannia' },
+    { file: 'avtomatyzatsiia.html', key: 'avtomatyzatsiia' },
     { file: 'zakhyst_vid_potopu.html', key: 'zakhyst_vid_potopu' },
     { file: 'pozhezhna_bezpeka.html', key: 'pozhezhna_bezpeka' }
 ];
