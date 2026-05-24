@@ -295,6 +295,7 @@
             .cart-item-price { grid-column: 2; }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -532,7 +533,7 @@ displayOrder();
 function validateForm() {
     const inputs = [
         { id: 'name', label: 'Прізвище, Ім\'я' },
-        { id: 'phone', label: 'Телефон', minLen: 13 },
+        { id: 'phone', label: 'Телефон' },
         { id: 'city', label: 'Місто' },
         { id: 'branch', label: 'Номер відділення' }
     ];
@@ -541,11 +542,15 @@ function validateForm() {
         const input = document.getElementById(item.id);
         const val = input.value.trim();
         
-        if (item.id === 'phone' && (val === '' || val === '+38' || val === '+38(' || val.length < 6)) {
-            input.classList.add('error');
-            input.focus();
-            scrollToField(input);
-            return false;
+        if (item.id === 'phone') {
+            // Full format: +38(0XX) XXX-XX-XX = 19 chars
+            const phoneDigits = val.replace(/\D/g, '');
+            if (val === '' || val === '+38' || val === '+38(' || phoneDigits.length < 12) {
+                input.classList.add('error');
+                input.focus();
+                scrollToField(input);
+                return false;
+            }
         }
         
         if (val === '') {
