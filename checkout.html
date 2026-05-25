@@ -273,67 +273,6 @@
 
         .toast-icon { font-size: 2em; display: block; margin-bottom: 10px; }
 
-        .radio-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .radio-label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9em;
-            color: #b0b0b0;
-            cursor: pointer;
-            padding: 8px 10px;
-            background: #222;
-            border: 1px solid #444;
-            border-radius: 5px;
-            transition: border-color 0.2s;
-        }
-
-        .radio-label:hover {
-            border-color: #800000;
-        }
-
-        .radio-label input[type="radio"] {
-            accent-color: #800000;
-            width: 16px;
-            height: 16px;
-            flex-shrink: 0;
-        }
-
-        .radio-label input[type="radio"]:checked + span {
-            color: #fff;
-            font-weight: 600;
-        }
-
-        .radio-label:has(input:checked) {
-            border-color: #800000;
-            background: #2a1a1a;
-        }
-
-        .delivery-fields {
-            margin-top: 10px;
-            padding-left: 10px;
-            border-left: 2px solid #800000;
-            animation: slideDown 0.3s ease;
-        }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .delivery-fields .form-group {
-            margin-bottom: 10px;
-        }
-
-        .delivery-fields .form-group:last-child {
-            margin-bottom: 0;
-        }
-
         @media (max-width: 768px) {
             .page-wrapper { margin-top: 70px; padding: 0; }
 
@@ -356,7 +295,6 @@
             .cart-item-price { grid-column: 2; }
         }
     </style>
-<base target="_blank">
 <base target="_blank">
 </head>
 <body>
@@ -428,57 +366,39 @@
             </div>
             <div class="form-group">
                 <label for="phone">Телефон отримувача</label>
-                <input type="tel" id="phone" name="phone" placeholder="+38(0XX) XXX-XX-XX" inputmode="tel">
+                <input type="tel" id="phone" name="phone" placeholder="+38(0XX) XXX-XX-XX">
             </div>
-
             <div class="form-group">
-                <label>Спосіб відправлення</label>
-                <div class="radio-group">
-                    <!-- Нова Пошта самовивіз -->
-                    <label class="radio-label">
-                        <input type="radio" name="delivery" value="nova_poshta" id="del-nova">
-                        <span>«Нова Пошта» (самовивіз)</span>
-                    </label>
-                    <div class="delivery-fields" id="fields-nova" style="display:none;">
-                        <div class="form-group">
-                            <label for="city-nova">Місто</label>
-                            <input type="text" id="city-nova" name="city" placeholder="Місто">
-                        </div>
-                        <div class="form-group">
-                            <label for="branch-nova">Номер відділення<img src="images/nova-poshta.png" alt="Нова Пошта" style="height: 18px; width: 18px; vertical-align: middle; margin: 0 4px 8px; background: #fff; padding: 1px; border-radius: 3px; object-fit: contain;"></label>
-                            <input type="text" id="branch-nova" name="branch" placeholder="Номер відділення/поштомату" inputmode="numeric" pattern="[0-9]*">
-                        </div>
-                    </div>
-
-                    <!-- Нова Пошта кур'єр -->
-                    <label class="radio-label">
-                        <input type="radio" name="delivery" value="nova_poshta_courier" id="del-courier">
-                        <span>«Нова Пошта» (кур'єр)</span>
-                    </label>
-                    <div class="delivery-fields" id="fields-courier" style="display:none;">
-                        <div class="form-group">
-                            <label for="address-courier">Адреса доставки</label>
-                            <input type="text" id="address-courier" name="address" placeholder="Вулиця, будинок, квартира">
-                        </div>
-                    </div>
-
-                    <!-- Укрпошта -->
-                    <label class="radio-label">
-                        <input type="radio" name="delivery" value="ukrposhta" id="del-ukr">
-                        <span>«Укрпошта»</span>
-                    </label>
-                    <div class="delivery-fields" id="fields-ukr" style="display:none;">
-                        <div class="form-group">
-                            <label for="city-ukr">Місто</label>
-                            <input type="text" id="city-ukr" name="city_ukr" placeholder="Місто">
-                        </div>
-                        <div class="form-group">
-                            <label for="branch-ukr">Номер відділення</label>
-                            <input type="text" id="branch-ukr" name="branch_ukr" placeholder="Номер відділення" inputmode="numeric" pattern="[0-9]*">
-                        </div>
-                    </div>
-                </div>
+                <label for="city">Місто</label>
+                <input type="text" id="city" name="city" placeholder="Місто">
             </div>
+            <div class="form-group">
+                <label for="branch">Номер відділення «Нової Пошти»<img src="images/nova-poshta.png" alt="Нова Пошта" style="height: 18px; width: 18px; vertical-align: middle; margin: 0 4px 8px; background: #fff; padding: 1px; border-radius: 3px; object-fit: contain;"></label>
+                <input type="tel" id="branch" name="branch" placeholder="Номер відділення/поштомату" inputmode="numeric" pattern="[0-9]*">
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             <input type="hidden" id="cart-data" name="cart">
 
@@ -501,35 +421,20 @@
 <audio id="cash-sound" src="sound.mp3"></audio>
 
 <script>
-// === Логіка перемикача способу відправлення ===
-const deliveryRadios = document.querySelectorAll('input[name="delivery"]');
-const fieldsNova = document.getElementById('fields-nova');
-const fieldsCourier = document.getElementById('fields-courier');
-const fieldsUkr = document.getElementById('fields-ukr');
 
-function updateDeliveryFields() {
-    const selected = document.querySelector('input[name="delivery"]:checked');
-    if (!selected) return;
-    const val = selected.value;
 
-    // Ховаємо всі поля
-    fieldsNova.style.display = 'none';
-    fieldsCourier.style.display = 'none';
-    fieldsUkr.style.display = 'none';
 
-    // Показуємо відповідні
-    if (val === 'nova_poshta') {
-        fieldsNova.style.display = 'block';
-    } else if (val === 'nova_poshta_courier') {
-        fieldsCourier.style.display = 'block';
-    } else if (val === 'ukrposhta') {
-        fieldsUkr.style.display = 'block';
-    }
-}
 
-deliveryRadios.forEach(radio => {
-    radio.addEventListener('change', updateDeliveryFields);
-});
+
+
+
+
+
+
+
+
+
+
 
 const PORTMONE_CONFIG = {
     payee_id: "ВАШ_PAYEE_ID",
@@ -575,34 +480,6 @@ function calculateDiscount(total) {
 
 function fmt(n) {
     return n.toLocaleString('uk-UA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
-
-function getDeliveryInfo() {
-    const selected = document.querySelector('input[name="delivery"]:checked');
-    if (!selected) return 'Не обрано';
-
-    const labels = {
-        'nova_poshta': 'Нова Пошта (самовивіз)',
-        'nova_poshta_courier': 'Нова Пошта (кур'єр)',
-        'ukrposhta': 'Укрпошта'
-    };
-    const base = labels[selected.value] || selected.value;
-
-    if (selected.value === 'nova_poshta') {
-        const city = document.getElementById('city-nova').value.trim();
-        const branch = document.getElementById('branch-nova').value.trim();
-        return base + (city ? ' — ' + city : '') + (branch ? ', відд. ' + branch : '');
-    }
-    if (selected.value === 'nova_poshta_courier') {
-        const address = document.getElementById('address-courier').value.trim();
-        return base + (address ? ' — ' + address : '');
-    }
-    if (selected.value === 'ukrposhta') {
-        const city = document.getElementById('city-ukr').value.trim();
-        const branch = document.getElementById('branch-ukr').value.trim();
-        return base + (city ? ' — ' + city : '') + (branch ? ', відд. ' + branch : '');
-    }
-    return base;
 }
 
 function createPortmonePayment() {
@@ -657,10 +534,11 @@ function displayOrder() {
     row1.innerHTML = `<span>Загальна сума:</span><span>${fmt(total)} грн</span>`;
     totalBlockEl.appendChild(row1);
 
+    // ===== ИЗМЕНЕНО: убран % из отображения =====
     const row2 = document.createElement('div');
     row2.className = discountPercent > 0 ? 'total-row discount' : 'total-row no-discount';
     row2.innerHTML = discountPercent > 0
-        ? `<span>Знижка:</span><span>− ${fmt(discountAmount)} грн</span>`
+        ? `<span>Знижка:</span><span>− ${fmt(discountAmount)} грн</span>`  // было: Знижка ${discountPercent}%
         : `<span>Знижка:</span><span>0.00 грн</span>`;
     totalBlockEl.appendChild(row2);
     setTimeout(() => row2.classList.add('show'), 1000);
@@ -675,12 +553,12 @@ function displayOrder() {
         if (sound) { sound.volume = 0.15; sound.play().catch(() => {}); }
     }, 2000);
 
+    // ===== ИЗМЕНЕНО: убран % из скрытого поля формы =====
     cartDataField.value =
         `Номер замовлення: ${currentOrderNumber}\n` + cartText +
-        `\nСпосіб відправлення: ${getDeliveryInfo()}` +
         `\nЗагальна сума: ${fmt(total)} грн` +
         (discountPercent > 0
-            ? `\nЗнижка: −${fmt(discountAmount)} грн\nДо сплати: ${fmt(finalTotal)} грн`
+            ? `\nЗнижка: −${fmt(discountAmount)} грн\nДо сплати: ${fmt(finalTotal)} грн`  // было: Знижка ${discountPercent}%
             : `\nДо сплати: ${fmt(finalTotal)} грн`) +
         `\n\n⚠️ Статус оплати: Очікується`;
 
@@ -694,7 +572,9 @@ displayOrder();
 function validateForm() {
     const inputs = [
         { id: 'name', label: 'Прізвище, Ім\'я' },
-        { id: 'phone', label: 'Телефон' }
+        { id: 'phone', label: 'Телефон' },
+        { id: 'city', label: 'Місто' },
+        { id: 'branch', label: 'Номер відділення' }
     ];
 
     for (let item of inputs) {
@@ -702,6 +582,7 @@ function validateForm() {
         const val = input.value.trim();
 
         if (item.id === 'phone') {
+            // Full format: +38(0XX) XXX-XX-XX = 19 chars
             const phoneDigits = val.replace(/\D/g, '');
             if (val === '' || val === '+38' || val === '+38(' || phoneDigits.length < 12) {
                 input.classList.add('error');
@@ -720,64 +601,6 @@ function validateForm() {
 
         input.classList.remove('error');
     }
-
-    const delivery = document.querySelector('input[name="delivery"]:checked');
-    const deliveryValue = delivery ? delivery.value : '';
-
-    if (deliveryValue === 'nova_poshta') {
-        const city = document.getElementById('city-nova');
-        const branch = document.getElementById('branch-nova');
-        if (city.value.trim() === '') {
-            city.classList.add('error');
-            city.focus();
-            scrollToField(city);
-            return false;
-        }
-        city.classList.remove('error');
-        if (branch.value.trim() === '') {
-            branch.classList.add('error');
-            branch.focus();
-            scrollToField(branch);
-            return false;
-        }
-        branch.classList.remove('error');
-    }
-
-    if (deliveryValue === 'nova_poshta_courier') {
-        const address = document.getElementById('address-courier');
-        if (address.value.trim() === '') {
-            address.classList.add('error');
-            address.focus();
-            scrollToField(address);
-            return false;
-        }
-        address.classList.remove('error');
-    }
-
-    if (deliveryValue === 'ukrposhta') {
-        const city = document.getElementById('city-ukr');
-        const branch = document.getElementById('branch-ukr');
-        if (city.value.trim() === '') {
-            city.classList.add('error');
-            city.focus();
-            scrollToField(city);
-            return false;
-        }
-        city.classList.remove('error');
-        if (branch.value.trim() === '') {
-            branch.classList.add('error');
-            branch.focus();
-            scrollToField(branch);
-            return false;
-        }
-        branch.classList.remove('error');
-    }
-
-    if (deliveryValue === '') {
-        alert('Оберіть спосіб відправлення');
-        return false;
-    }
-
     return true;
 }
 
@@ -886,7 +709,7 @@ phoneInput.addEventListener('click', function() {
     }
 });
 
-const formInputs = document.querySelectorAll('#name, #phone, #city-nova, #branch-nova, #address-courier, #city-ukr, #branch-ukr');
+const formInputs = document.querySelectorAll('#name, #phone, #city, #branch');
 formInputs.forEach((field, index) => {
     field.addEventListener('keydown', function(e) {
         if (e.key === "Enter") {
