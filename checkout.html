@@ -376,6 +376,30 @@
                 <label for="branch">Номер відділення «Нової Пошти»<img src="images/nova-poshta.png" alt="Нова Пошта" style="height: 18px; width: 18px; vertical-align: middle; margin: 0 4px 8px; background: #fff; padding: 1px; border-radius: 3px; object-fit: contain;"></label>
                 <input type="tel" id="branch" name="branch" placeholder="Номер відділення/поштомату" inputmode="numeric" pattern="[0-9]*">
             </div>
+            <div class="form-group">
+    <label>Спосіб відправлення</label>
+    <div class="radio-group">
+        <label class="radio-label">
+            <input type="radio" name="delivery" value="nova_poshta" checked>
+            <span>«Нова Пошта» (самовивіз)</span>
+        </label>
+        <label class="radio-label">
+            <input type="radio" name="delivery" value="nova_poshta_courier">
+            <span>«Нова Пошта» (кур'єр)</span>
+        </label>
+        <label class="radio-label">
+            <input type="radio" name="delivery" value="ukrposhta">
+            <span>«Укрпошта»</span>
+        </label>
+        <label class="radio-label">
+            <input type="radio" name="delivery" value="other" id="delivery-other">
+            <span>Інший спосіб</span>
+        </label>
+    </div>
+    <input type="text" id="delivery-other-text" name="delivery_other" 
+           placeholder="Вкажіть спосіб відправлення" 
+           style="display:none; margin-top:10px;">
+</div>
             <input type="hidden" id="cart-data" name="cart">
 
             <div class="button-row">
@@ -397,6 +421,21 @@
 <audio id="cash-sound" src="sound.mp3"></audio>
 
 <script>
+    // Логіка перемикача способу відправлення
+const deliveryRadios = document.querySelectorAll('input[name="delivery"]');
+const otherTextField = document.getElementById('delivery-other-text');
+
+deliveryRadios.forEach(radio => {
+    radio.addEventListener('change', function() {
+        if (this.value === 'other') {
+            otherTextField.style.display = 'block';
+            otherTextField.focus();
+        } else {
+            otherTextField.style.display = 'none';
+            otherTextField.value = '';
+        }
+    });
+});
 const PORTMONE_CONFIG = {
     payee_id: "ВАШ_PAYEE_ID",
     shop_order_number: "",
