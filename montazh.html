@@ -72,8 +72,68 @@
             font-size: 1em;
             color: #666;
             margin-bottom: 40px;
-        }
+        } 
+      /* ===== БАННЕРИ AJAX / IMOU ===== */
+.hero-banner {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    min-height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 25px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+}
 
+.hero-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.60);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 30px 20px;
+}
+
+.hero-banner h2 {
+    color: #fff;
+    font-size: 2em;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+}
+
+.hero-banner p {
+    color: #ddd;
+    font-size: 1em;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.ajax-banner {
+    background-image: url('/images/nastroyka_ajax.jpg');
+}
+
+.imou-banner {
+    background-image: url('/images/nastroyka_imou.jpg');
+}
+
+@media (max-width: 768px) {
+    .hero-banner {
+        min-height: 190px;
+    }
+
+    .hero-banner h2 {
+        font-size: 1.5em;
+    }
+}
         /* ===== СЕКЦІЇ ===== */
         .section {
             background: #1a1a1a;
@@ -389,14 +449,12 @@
 
             <!-- ===== AJAX ===== -->
             <section class="section">
-                <div class="section-header">
-                    <img src="/images/ajax_logo.png" alt="Ajax Systems" class="section-brand-logo"
-                         onerror="this.style.display='none'">
-                    <div class="section-brand-title">
-                        <h2>Налаштування системи безпеки Ajax</h2>
-                        <p>Додаток Ajax Security System — iOS та Android</p>
-                    </div>
-                </div>
+               <div class="hero-banner ajax-banner">
+    <div class="hero-content">
+        <h2>Налаштування системи безпеки Ajax</h2>
+        <p>Додаток Ajax Security System — iOS та Android</p>
+    </div>
+</div>
 
                 <div class="store-badges">
                     <a href="https://apps.apple.com/us/app/ajax-security-system/id1063166247" target="_blank" rel="noopener noreferrer" class="store-badge">
@@ -493,14 +551,12 @@
 
             <!-- ===== IMOU ===== -->
             <section class="section">
-                <div class="section-header">
-                    <img src="/images/imou_logo.png" alt="IMOU" class="section-brand-logo"
-                         onerror="this.style.display='none'">
-                    <div class="section-brand-title">
-                        <h2>Налаштування відеокамер IMOU</h2>
-                        <p>Додаток IMOU Life — iOS та Android</p>
-                    </div>
-                </div>
+               <div class="hero-banner imou-banner">
+    <div class="hero-content">
+        <h2>Налаштування відеокамер IMOU</h2>
+        <p>Додаток IMOU Life — iOS та Android</p>
+    </div>
+</div>
 
                 <div class="store-badges">
                     <a href="https://apps.apple.com/app/imou-life/id1458523272" target="_blank" rel="noopener noreferrer" class="store-badge">
