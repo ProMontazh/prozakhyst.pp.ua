@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Налаштування систем безпеки Ajax та камер IMOU. Покрокова інструкція з підключення, встановлення та налаштування через мобільний додаток. ПРОЗАХИСТ Харків.">
+    <meta name="keywords" content="налаштування Ajax, підключення Ajax Hub, встановлення IMOU камера, додаток Ajax Security, додаток IMOU Life, монтаж сигналізації Ajax">
+    <meta name="author" content="ПРОЗАХИСТ">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://xn--80anevegliy.pp.ua/montazh.html">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>Монтаж та налаштування Ajax і IMOU | ПРОЗАХИСТ</title>
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #0d0d0d;
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 55px;
+            background: linear-gradient(to right, rgba(7,7,7,0.95), rgba(148,148,148,0.95));
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 2px solid #800000;
+        }
+
+        header .logo svg { height: 55px; width: auto; display: block; }
+
+        /* ===== MAIN ===== */
+        main { margin-top: 55px; }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            animation: fadeIn 0.9s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn { to { opacity: 1; } }
+
+        .page-title {
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .page-title span { color: #ff4444; }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        /* ===== СЕКЦІЇ ===== */
+        .section {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #333;
+        }
+
+        .section-brand-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            object-fit: contain;
+            background: #222;
+            padding: 4px;
+            flex-shrink: 0;
+        }
+
+        .section-brand-title {
+            flex: 1;
+        }
+
+        .section-brand-title h2 {
+            font-size: 1.25em;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .section-brand-title p {
+            font-size: 0.88em;
+            color: #666;
+        }
+
+        /* ===== КРОКИ ===== */
+        .steps-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: step-counter;
+        }
+
+        .step-item {
+            counter-increment: step-counter;
+            display: flex;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px dotted #2a2a2a;
+            align-items: flex-start;
+        }
+
+        .step-item:last-child { border-bottom: none; }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(145deg, #800000, #a00000);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.95em;
+            margin-top: 2px;
+        }
+
+        .step-content {
+            flex: 1;
+            font-size: 0.93em;
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        .step-content strong { color: #e0e0e0; }
+
+        .step-content a {
+            color: #64b5f6;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .step-content a:hover { color: #fff; }
+
+        /* ===== STORE BADGES ===== */
+        .store-badges {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .store-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #222;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 7px 14px;
+            text-decoration: none;
+            color: #e0e0e0;
+            font-size: 0.85em;
+            font-weight: 600;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .store-badge:hover { border-color: #800000; color: #fff; }
+        .store-badge-icon { font-size: 1.2em; }
+
+        /* ===== SUPPORT BOX ===== */
+        .support-box {
+            margin-top: 18px;
+            background: #222;
+            border: 1px solid #333;
+            border-left: 4px solid #800000;
+            border-radius: 6px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .support-box p {
+            font-size: 0.88em;
+            color: #888;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .support-box a.phone-link {
+            font-size: 1em;
+            font-weight: 700;
+            color: #ff4444;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .support-box a.phone-link:hover { color: #fff; }
+
+        /* ===== TIP BOX ===== */
+        .tip-box {
+            background: rgba(100,181,246,0.06);
+            border-left: 4px solid #007bff;
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin-top: 16px;
+            font-size: 0.88em;
+            color: #888;
+        }
+
+        .tip-box strong { color: #64b5f6; }
+
+        /* ===== КНОПКИ ===== */
+        .buttons-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(145deg, #800000, #a00000);
+            color: #fff;
+            padding: 13px 32px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 700;
+            font-family: 'Open Sans', sans-serif;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(145deg, #a00000, #c00000);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: #222;
+            border: 1px solid #444;
+            color: #b0b0b0;
+            padding: 13px 32px;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 600;
+            font-family: 'Open Sans', sans-serif;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover { border-color: #800000; color: #fff; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #111;
+            border-top: 2px solid #800000;
+            color: #aaa;
+            text-align: center;
+            padding: 30px 20px 16px;
+            font-size: 0.9em;
+        }
+
+        .footer-wrapper { max-width: 1200px; margin: 0 auto; }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 25px;
+            margin-bottom: 20px;
+            align-items: start;
+            text-align: left;
+        }
+
+        .footer-links h4 { color: #fff; margin-bottom: 12px; font-size: 0.95em; font-weight: 700; }
+        .footer-links .cat2, .footer-links .cat3 { padding-top: 30px; }
+
+        .footer-links a {
+            display: block;
+            color: #888;
+            text-decoration: none;
+            margin-bottom: 7px;
+            font-size: 0.88em;
+            line-height: 1.4;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: #fff; }
+
+        footer p { color: #555; margin-top: 8px; }
+        footer .black { color: #888; }
+
+        /* ===== АДАПТИВНІСТЬ ===== */
+        @media (max-width: 1024px) {
+            .footer-links { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px 15px; }
+            .section { padding: 18px 14px; }
+            .page-title { font-size: 1.5em; }
+            .footer-links { grid-template-columns: 1fr; gap: 20px; text-align: center; }
+            .footer-links .cat2, .footer-links .cat3 { padding-top: 0; }
+            .buttons-row { flex-direction: column; align-items: center; }
+            .btn-primary, .btn-secondary { width: 100%; max-width: 320px; }
+        }
+
+        @media (max-width: 480px) {
+            .page-title { font-size: 1.3em; }
+            .step-number { width: 30px; height: 30px; font-size: 0.85em; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <a href="index.html" style="text-decoration:none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="200" height="55" viewBox="0 0 600 200">
+                    <defs>
+                        <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="-0.3" stop-color="#999"><animate attributeName="offset" values="-0.3; 1.3; 1.3" keyTimes="0; 0.5; 1" dur="15s" repeatCount="indefinite" begin="2s"/></stop>
+                            <stop offset="-0.15" stop-color="#ffffff"><animate attributeName="offset" values="-0.15; 1.45; 1.45" keyTimes="0; 0.5; 1" dur="15s" repeatCount="indefinite" begin="2s"/></stop>
+                            <stop offset="0" stop-color="#999"><animate attributeName="offset" values="0; 1.6; 1.6" keyTimes="0; 0.5; 1" dur="15s" repeatCount="indefinite" begin="2s"/></stop>
+                        </linearGradient>
+                        <linearGradient id="pro-wave" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="-0.3" stop-color="#800000"><animate attributeName="offset" values="-0.3; 1.3; 1.3" keyTimes="0; 0.25; 1" dur="4.2s" begin="10s; 25s; 40s; 55s; 70s" fill="freeze"/></stop>
+                            <stop offset="-0.15" stop-color="#ff4444"><animate attributeName="offset" values="-0.15; 1.45; 1.45" keyTimes="0; 0.25; 1" dur="4.2s" begin="10s; 25s; 40s; 55s; 70s" fill="freeze"/></stop>
+                            <stop offset="0" stop-color="#800000"><animate attributeName="offset" values="0; 1.6; 1.6" keyTimes="0; 0.25; 1" dur="4.2s" begin="10s; 25s; 40s; 55s; 70s" fill="freeze"/></stop>
+                        </linearGradient>
+                        <linearGradient id="zahist-wave" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="-0.3" stop-color="#808080"><animate attributeName="offset" values="-0.3; 1.3; 1.3" keyTimes="0; 0.25; 1" dur="5s" begin="10.7s; 25.7s; 40.7s; 55.7s; 70.7s" fill="freeze"/></stop>
+                            <stop offset="-0.15" stop-color="#e0e0e0"><animate attributeName="offset" values="-0.15; 1.45; 1.45" keyTimes="0; 0.25; 1" dur="5s" begin="10.7s; 25.7s; 40.7s; 55.7s; 70.7s" fill="freeze"/></stop>
+                            <stop offset="0" stop-color="#808080"><animate attributeName="offset" values="0; 1.6; 1.6" keyTimes="0; 0.25; 1" dur="5s" begin="10.7s; 25.7s; 40.7s; 55.7s; 70.7s" fill="freeze"/></stop>
+                        </linearGradient>
+                    </defs>
+                    <text x="15" y="100" font-family="Open Sans, sans-serif" font-weight="bold" font-size="74" fill="url(#pro-wave)">ПРО</text>
+                    <text x="172" y="100" font-family="Open Sans, sans-serif" font-weight="bold" font-size="74" fill="url(#zahist-wave)">ЗАХИСТ</text>
+                    <text x="15" y="160" font-family="Arial, sans-serif" font-weight="bold" font-size="33" fill="url(#wave-gradient)">БЕЗДРОТОВІ СИСТЕМИ БЕЗПЕКИ</text>
+                    <line x1="483" y1="65" x2="523" y2="48" stroke="#800000" stroke-width="10"/>
+                    <line x1="523" y1="48" x2="563" y2="65" stroke="#800000" stroke-width="10"/>
+                    <line x1="493" y1="70" x2="493" y2="100" stroke="#808080" stroke-width="10"/>
+                    <line x1="553" y1="70" x2="553" y2="100" stroke="#808080" stroke-width="10"/>
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <h1 class="page-title">Монтаж та <span>налаштування</span></h1>
+            <p class="page-subtitle">Покрокові інструкції з підключення систем безпеки Ajax та камер IMOU</p>
+
+            <!-- ===== AJAX ===== -->
+            <section class="section">
+                <div class="section-header">
+                    <img src="/images/ajax_logo.png" alt="Ajax Systems" class="section-brand-logo"
+                         onerror="this.style.display='none'">
+                    <div class="section-brand-title">
+                        <h2>🛡️ Налаштування системи безпеки Ajax</h2>
+                        <p>Додаток Ajax Security — iOS та Android</p>
+                    </div>
+                </div>
+
+                <div class="store-badges">
+                    <a href="https://apps.apple.com/app/ajax-security-system/id1063166444" target="_blank" rel="noopener noreferrer" class="store-badge">
+                        <span class="store-badge-icon">🍎</span> App Store
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.ajaxsystems" target="_blank" rel="noopener noreferrer" class="store-badge">
+                        <span class="store-badge-icon">▶</span> Google Play
+                    </a>
+                </div>
+
+                <ol class="steps-list" style="margin-top: 20px;">
+                    <li class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <strong>Завантажте додаток Ajax Security</strong> з App Store або Google Play.
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <strong>Створіть обліковий запис</strong> або увійдіть у вже існуючий.
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <strong>Підключіть хаб до роутера</strong> за допомогою кабелю і увімкніть його. Індикатор на хабі повинен засвітитись.
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            У додатку перейдіть у розділ <strong>«Простори»</strong> та натисніть <strong>«Додати простір»</strong>. Дайте простору назву, створіть кімнати — наприклад, «Коридор» або «Спальня».
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <strong>Додайте датчики</strong>, обравши «Додати пристрій» у додатку, і призначте їх до кімнат.
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <strong>Протестуйте систему</strong>: активуйте режим охорони та перевірте, чи надходять сповіщення на смартфон.
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            Після налаштування ви зможете <strong>керувати системою зі смартфона</strong> та отримувати сповіщення по кожному приміщенню в режимі реального часу.
+                        </div>
+                    </li>
+                </ol>
+
+                <div class="tip-box">
+                    <strong>💡 Порада:</strong> розташовуйте датчики на відстані не більше 1700 м від хаба (у відкритому просторі). За наявності перешкод (бетонні стіни, перекриття) використовуйте ретранслятор Ajax ReX.
+                </div>
+
+                <div class="support-box">
+                    <p>Виникли труднощі з налаштуванням? Телефонуйте на гарячу лінію Ajax Systems:</p>
+                    <a href="tel:0800331911" class="phone-link">☎ 0 800 331 911</a>
+                </div>
+            </section>
+
+            <!-- ===== IMOU ===== -->
+            <section class="section">
+                <div class="section-header">
+                    <img src="/images/imou_logo.png" alt="IMOU" class="section-brand-logo"
+                         onerror="this.style.display='none'">
+                    <div class="section-brand-title">
+                        <h2>📷 Налаштування камер IMOU</h2>
+                        <p>Додаток IMOU Life — iOS та Android</p>
+                    </div>
+                </div>
+
+                <div class="store-badges">
+                    <a href="https://apps.apple.com/app/imou-life/id1458523272" target="_blank" rel="noopener noreferrer" class="store-badge">
+                        <span class="store-badge-icon">🍎</span> App Store
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.mm.android.IMOULIFE" target="_blank" rel="noopener noreferrer" class="store-badge">
+                        <span class="store-badge-icon">▶</span> Google Play
+                    </a>
+                </div>
+
+                <ol class="steps-list" style="margin-top: 20px;">
+                    <li class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <strong>Завантажте додаток IMOU Life</strong> з App Store або Google Play.
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            Відкрийте додаток і <strong>зареєструйте новий обліковий запис</strong> або увійдіть, якщо ви вже маєте акаунт.
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            Натисніть кнопку <strong>«Додати пристрій»</strong>.
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <strong>Виберіть вашу камеру IMOU</strong> зі списку моделей або скористайтесь автоматичним пошуком.
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <strong>Відскануйте QR-код</strong>, що знаходиться на задній панелі або знизу камери.
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            Введіть <strong>назву вашої Wi-Fi мережі та пароль</strong> для підключення камери до інтернету.
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            Дочекайтесь, поки <strong>камера підключиться до мережі</strong>. Індикатор на камері стане синім або зеленим.
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">8</div>
+                        <div class="step-content">
+                            Після успішного підключення ви зможете <strong>переглядати відео в реальному часі</strong>, налаштовувати детекцію руху та отримувати сповіщення.
+                        </div>
+                    </li>
+                </ol>
+
+                <div class="tip-box">
+                    <strong>💡 Порада:</strong> для стабільного сигналу розміщуйте камеру в зоні впевненого прийому Wi-Fi. При налаштуванні поворотних камер з автотрекінгом увімкніть цю функцію в налаштуваннях камери в додатку.
+                </div>
+
+                <div class="support-box">
+                    <p>Потрібна допомога з налаштуванням камери IMOU? Гаряча лінія підтримки:</p>
+                    <a href="tel:0800217317" class="phone-link">☎ 0 800 217 317</a>
+                </div>
+            </section>
+
+            <!-- ===== КОНТАКТИ ===== -->
+            <section class="section">
+                <div class="section-header" style="margin-bottom:16px;">
+                    <div class="section-brand-title">
+                        <h2>🔧 Потрібен професійний монтаж?</h2>
+                        <p>Харків та область</p>
+                    </div>
+                </div>
+                <p style="color:#b0b0b0; font-size:0.93em; line-height:1.7; margin-bottom:16px;">
+                    Якщо ви хочете, щоб систему безпеки встановили та налаштували фахівці — звертайтеся до нас. Ми допоможемо підібрати оптимальну конфігурацію, встановимо обладнання та перевіримо роботу всіх пристроїв. Виїзд по Харкову та Харківській області.
+                </p>
+                <div class="support-box">
+                    <p>ПРОЗАХИСТ — Харків:</p>
+                    <a href="tel:+380935016040" class="phone-link">☎ +380 93 501-60-40</a>
+                </div>
+            </section>
+
+            <div class="buttons-row">
+                <a href="index.html" class="btn-primary">🛒 Перейти до каталогу</a>
+                <a href="dostavka.html" class="btn-secondary">📦 Доставка та оплата</a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <div class="footer-wrapper">
+            <div class="footer-links">
+                <div class="category-col cat1">
+                    <h4>Категорії товарів</h4>
+                    <a href="vnutrishni_kamery.html">Внутрішні камери IMOU</a>
+                    <a href="zovnishni_kamery.html">Зовнішні камери IMOU</a>
+                    <a href="zovnishni_4G_kamery.html">Зовнішні 4G камери IMOU</a>
+                    <a href="karty_pam'yati.html">Карти пам'яті microSD</a>
+                </div>
+                <div class="category-col cat2">
+                    <a href="komplekty_syhnalizaciyi.html">Комплекти сигналізації Ajax</a>
+                    <a href="khuby.html">Хаби модулі ретранслятори Ajax</a>
+                    <a href="vnutrishni_datchyky.html">Внутрішні датчики Ajax</a>
+                    <a href="zovnishni_datchyky.html">Зовнішні датчики сирени Ajax</a>
+                </div>
+                <div class="category-col cat3">
+                    <a href="prystroi_keruvannia.html">Клавіатури та брелоки Ajax</a>
+                    <a href="avtomatyzatsiia.html">Автоматизація Ajax</a>
+                    <a href="zakhyst_vid_potopu.html">Захист від потопу Ajax</a>
+                    <a href="pozhezhna_bezpeka.html">Пожежна безпека Ajax</a>
+                </div>
+                <div class="info-col">
+                    <h4>Інформація</h4>
+                    <a href="dostavka.html">Доставка та оплата</a>
+                    <a href="montazh.html">Монтаж та налаштування</a>
+                    <a href="garantiya.html">Гарантія та сервіс</a>
+                </div>
+                <div class="contacts-col">
+                    <h4>Контакти</h4>
+                    <a href="tel:+380935016040">📞 (093) 501-60-40</a>
+                    <a href="mailto:prozakhyst@ukr.net">📧 prozakhyst@ukr.net</a>
+                    <p style="color:#666; margin-top:10px; font-size:0.9em;">м. Харків, Україна</p>
+                </div>
+            </div>
+        </div>
+        <p>&copy; 2024–2026 <span class="black">ПРОЗАХИСТ.</span> Всі права захищені.</p>
+        <p style="color:#444; font-size:0.85em; margin-top:8px;">Охоронна сигналізація та відеонагляд з доставкою по Україні</p>
+    </footer>
+
+</body>
+</html>
