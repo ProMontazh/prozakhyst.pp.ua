@@ -361,6 +361,7 @@
 <base target="_blank">
 <base target="_blank">
 <base target="_blank">
+<base target="_blank">
 </head>
 <body>
 
@@ -433,6 +434,10 @@
                 <label for="phone">Телефон отримувача</label>
                 <input type="tel" id="phone" name="phone" placeholder="+38(0XX) XXX-XX-XX">
             </div>
+            <div class="form-group">
+                <label for="city">Місто</label>
+                <input type="text" id="city" name="city" placeholder="Місто">
+            </div>
 
             <div class="section-title">Спосіб відправлення</div>
             <div class="form-group">
@@ -443,10 +448,6 @@
                         <span><img src="images/nova-poshta.png" alt="Нова Пошта" style="height: 18px; width: 18px; vertical-align: middle; margin: 0 4px 8px; background: #fff; padding: 1px; border-radius: 3px; object-fit: contain;"> «Нова Пошта» (самовивіз)</span>
                     </label>
                     <div class="delivery-fields" id="fields-nova" style="display:none;">
-                        <div class="form-group">
-                            <label for="city-nova">Місто</label>
-                            <input type="text" id="city-nova" name="city" placeholder="Місто">
-                        </div>
                         <div class="form-group">
                             <label for="branch-nova">Номер відділення</label>
                             <input type="tel" id="branch-nova" name="branch" placeholder="Номер відділення/поштомату" inputmode="numeric" pattern="[0-9]*">
@@ -471,10 +472,6 @@
                         <span><img src="images/ukr-poshta.jpg" alt="Укрпошта" style="height: 18px; width: 18px; vertical-align: middle; margin: 0 4px 8px; background: #fff; padding: 1px; border-radius: 3px; object-fit: contain;"> «Укрпошта»</span>
                     </label>
                     <div class="delivery-fields" id="fields-ukr" style="display:none;">
-                        <div class="form-group">
-                            <label for="city-ukr">Місто</label>
-                            <input type="text" id="city-ukr" name="city_ukr" placeholder="Місто">
-                        </div>
                         <div class="form-group">
                             <label for="branch-ukr">Номер відділення</label>
                             <input type="tel" id="branch-ukr" name="branch_ukr" placeholder="Номер відділення" inputmode="numeric" pattern="[0-9]*">
@@ -522,13 +519,13 @@ function updateDeliveryFields() {
     let targetField = null;
     if (val === 'nova_poshta') {
         fieldsNova.style.display = 'block';
-        targetField = document.getElementById('city-nova');
+        targetField = document.getElementById('branch-nova');
     } else if (val === 'nova_poshta_courier') {
         fieldsCourier.style.display = 'block';
         targetField = document.getElementById('address-courier');
     } else if (val === 'ukrposhta') {
         fieldsUkr.style.display = 'block';
-        targetField = document.getElementById('city-ukr');
+        targetField = document.getElementById('branch-ukr');
     }
 
     if (targetField) {
@@ -715,15 +712,7 @@ function validateForm() {
     const deliveryValue = delivery ? delivery.value : '';
 
     if (deliveryValue === 'nova_poshta') {
-        const city = document.getElementById('city-nova');
         const branch = document.getElementById('branch-nova');
-        if (city.value.trim() === '') {
-            city.classList.add('error');
-            city.focus();
-            scrollToField(city);
-            return false;
-        }
-        city.classList.remove('error');
         if (branch.value.trim() === '') {
             branch.classList.add('error');
             branch.focus();
@@ -745,15 +734,7 @@ function validateForm() {
     }
 
     if (deliveryValue === 'ukrposhta') {
-        const city = document.getElementById('city-ukr');
         const branch = document.getElementById('branch-ukr');
-        if (city.value.trim() === '') {
-            city.classList.add('error');
-            city.focus();
-            scrollToField(city);
-            return false;
-        }
-        city.classList.remove('error');
         if (branch.value.trim() === '') {
             branch.classList.add('error');
             branch.focus();
@@ -762,6 +743,15 @@ function validateForm() {
         }
         branch.classList.remove('error');
     }
+
+    const city = document.getElementById('city');
+    if (city.value.trim() === '') {
+        city.classList.add('error');
+        city.focus();
+        scrollToField(city);
+        return false;
+    }
+    city.classList.remove('error');
 
     if (deliveryValue === '') {
         alert('Оберіть спосіб відправлення');
@@ -830,15 +820,57 @@ document.getElementById('checkout-form').addEventListener('submit', function(e) 
 
 const phoneInput = document.getElementById('phone');
 
+phoneInput.addEventListener('mouseenter', function() {
+    if (!this.value || this.value === '') {
+        this.value = '+38(0';
+    }
+});
+
 phoneInput.addEventListener('focus', function() {
     if (!this.value || this.value === '') {
-        this.value = '+38';
+        this.value = '+38(0';
     }
 });
 
 phoneInput.addEventListener('blur', function() {
-    if (this.value === '+38' || this.value === '+38(') {
+    if (this.value === '+38' || this.value === '+38(' || this.value === '+38(0') {
         this.value = '';
+    }
+});
+
+phoneInput.addEventListener('keydown', function(e) {
+    // Handle Backspace properly - delete last digit, not just character
+    if (e.key === 'Backspace' || e.key === 'Delete') {
+        e.preventDefault();
+        let val = this.value;
+        let digits = val.replace(/\D/g, '');
+
+        // Remove last digit
+        if (digits.length > 2) {
+            digits = digits.slice(0, -1);
+        } else {
+            // If only country code digits left, clear all
+            this.value = '';
+            return;
+        }
+
+        // Rebuild formatted string
+        let out = '+38';
+        if (digits.length >= 1) out += '(' + digits.slice(0, 1);
+        if (digits.length >= 2) out += digits.slice(1, 2);
+        if (digits.length >= 3) out += digits.slice(2, 3);
+        if (digits.length >= 3) out += ')';
+        if (digits.length >= 4) out += '-' + digits.slice(3, 4);
+        if (digits.length >= 5) out += digits.slice(4, 5);
+        if (digits.length >= 6) out += digits.slice(5, 6);
+        if (digits.length >= 6) out += '-';
+        if (digits.length >= 7) out += digits.slice(6, 7);
+        if (digits.length >= 8) out += digits.slice(7, 8);
+        if (digits.length >= 8) out += '-';
+        if (digits.length >= 9) out += digits.slice(8, 9);
+        if (digits.length >= 10) out += digits.slice(9, 10);
+
+        this.value = out;
     }
 });
 
@@ -871,12 +903,12 @@ phoneInput.addEventListener('input', function(e) {
 });
 
 phoneInput.addEventListener('click', function() {
-    if (this.value === '+38') {
-        this.setSelectionRange(3, 3);
+    if (this.value === '+38' || this.value === '+38(0') {
+        this.setSelectionRange(5, 5);
     }
 });
 
-const formInputs = document.querySelectorAll('#name, #phone, #city-nova, #branch-nova, #address-courier, #city-ukr, #branch-ukr');
+const formInputs = document.querySelectorAll('#name, #phone, #city, #branch-nova, #address-courier, #branch-ukr');
 formInputs.forEach((field, index) => {
     field.addEventListener('keydown', function(e) {
         if (e.key === "Enter") {
