@@ -838,66 +838,39 @@ phoneInput.addEventListener('blur', function() {
     }
 });
 
-phoneInput.addEventListener('keydown', function(e) {
-    // Handle Backspace properly - delete last digit, not just character
-    if (e.key === 'Backspace' || e.key === 'Delete') {
-        e.preventDefault();
-        let val = this.value;
-        let digits = val.replace(/\D/g, '');
-
-        // Remove last digit
-        if (digits.length > 2) {
-            digits = digits.slice(0, -1);
-        } else {
-            // If only country code digits left, clear all
-            this.value = '';
-            return;
-        }
-
-        // Rebuild formatted string
-        let out = '+38';
-        if (digits.length >= 1) out += '(' + digits.slice(0, 1);
-        if (digits.length >= 2) out += digits.slice(1, 2);
-        if (digits.length >= 3) out += digits.slice(2, 3);
-        if (digits.length >= 3) out += ')';
-        if (digits.length >= 4) out += '-' + digits.slice(3, 4);
-        if (digits.length >= 5) out += digits.slice(4, 5);
-        if (digits.length >= 6) out += digits.slice(5, 6);
-        if (digits.length >= 6) out += '-';
-        if (digits.length >= 7) out += digits.slice(6, 7);
-        if (digits.length >= 8) out += digits.slice(7, 8);
-        if (digits.length >= 8) out += '-';
-        if (digits.length >= 9) out += digits.slice(8, 9);
-        if (digits.length >= 10) out += digits.slice(9, 10);
-
-        this.value = out;
-    }
-});
 
 phoneInput.addEventListener('input', function(e) {
-    let val = e.target.value;
+    let digits = e.target.value.replace(/\D/g, '');
 
-    if (!val.startsWith('+38')) {
-        val = '+38' + val.replace(/^\+?3?8?/, '');
+    // убираем 38 если пользователь вставил полный номер
+    if (digits.startsWith('38')) {
+        digits = digits.slice(2);
     }
 
-    let digits = val.slice(3).replace(/\D/g, '');
-    if (digits.length > 10) digits = digits.slice(0, 10);
+    // максимум 10 цифр после +38
+    digits = digits.slice(0, 10);
 
     let out = '+38';
-    if (digits.length >= 1) out += '(' + digits.slice(0, 1);
-    if (digits.length >= 2) out += digits.slice(1, 2);
-    if (digits.length >= 3) out += digits.slice(2, 3);
-    if (digits.length >= 3) out += ')';
-    if (digits.length >= 4) out += '-' + digits.slice(3, 4);
-    if (digits.length >= 5) out += digits.slice(4, 5);
-    if (digits.length >= 6) out += digits.slice(5, 6);
-    if (digits.length >= 6) out += '-';
-    if (digits.length >= 7) out += digits.slice(6, 7);
-    if (digits.length >= 8) out += digits.slice(7, 8);
-    if (digits.length >= 8) out += '-';
-    if (digits.length >= 9) out += digits.slice(8, 9);
-    if (digits.length >= 10) out += digits.slice(9, 10);
+
+    if (digits.length > 0) {
+        out += '(' + digits.slice(0, 3);
+    }
+
+    if (digits.length >= 3) {
+        out += ')';
+    }
+
+    if (digits.length > 3) {
+        out += ' ' + digits.slice(3, 6);
+    }
+
+    if (digits.length > 6) {
+        out += '-' + digits.slice(6, 8);
+    }
+
+    if (digits.length > 8) {
+        out += '-' + digits.slice(8, 10);
+    }
 
     e.target.value = out;
 });
