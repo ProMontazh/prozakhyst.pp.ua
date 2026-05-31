@@ -5,7 +5,7 @@ const CATEGORY_MAP = {
     vnutrishni_kamery: { label: 'Внутрішні камери IMOU', icon: 'images/indoor_1.png' },
     zovnishni_kamery: { label: 'Зовнішні камери IMOU', icon: 'images/outdoor_1.png' },
     zovnishni_4G_kamery: { label: 'Зовнішні 4G камери IMOU', icon: 'images/outdoor_4G_1.png' },
-    microSD: { label: 'Карти пам\'яті microSD', icon: 'images/microSD_1.png' },
+    
     komplekty_syhnalizaciyi: { label: 'Комплекти сигналізації Ajax', icon: 'images/alarm_1.png' },
     khuby: { label: 'Хаби, модулі Ajax', icon: 'images/hub_white_1.png' },
     vnutrishni_datchyky: { label: 'Внутрішня охорона Ajax', icon: 'images/protect_indoor_1.png' },
@@ -14,6 +14,7 @@ const CATEGORY_MAP = {
     avtomatyzatsiia: { label: 'Автоматизація Ajax', icon: 'images/avtomat_1.png' },
     zakhyst_vid_potopu: { label: 'Захист від потопу Ajax', icon: 'images/waterstop_1.png' },
     pozhezhna_bezpeka: { label: 'Захист від пожежі Ajax', icon: 'images/fire_1.png' },
+    aksesuary: { label: 'Аксесуари', icon: 'images/microSD_2.png' },
     other: { label: 'Інше', icon: 'favicon.svg' }
 };
 
