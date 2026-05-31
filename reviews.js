@@ -409,6 +409,7 @@ function goToCategoryFromReview(categoryId) {
         'zovnishni_datchyky': 'zovnishni_datchyky.html',
         'zakhyst_vid_potopu': 'zakhyst_vid_potopu.html',
         'pozhezhna_bezpeka': 'pozhezhna_bezpeka.html',
+        'aksesuary': 'aksesuary.html',
         'other': 'index.html'
     };
 
