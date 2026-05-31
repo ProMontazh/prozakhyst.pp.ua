@@ -43,7 +43,7 @@ const CATEGORY_SLIDES = [
     { file: 'vnutrishni_kamery.html', key: 'vnutrishni_kamery' },
     { file: 'zovnishni_kamery.html', key: 'zovnishni_kamery' },
     { file: 'zovnishni_4G_kamery.html', key: 'zovnishni_4G_kamery' },
-    { file: "karty_pam'yati.html", key: 'microSD' },
+    
     { file: 'komplekty_syhnalizaciyi.html', key: 'komplekty_syhnalizaciyi' },
     { file: 'khuby.html', key: 'khuby' },
     { file: 'vnutrishni_datchyky.html', key: 'vnutrishni_datchyky' },
@@ -51,7 +51,8 @@ const CATEGORY_SLIDES = [
     { file: 'prystroi_keruvannia.html', key: 'prystroi_keruvannia' },
     { file: 'avtomatyzatsiia.html', key: 'avtomatyzatsiia' },
     { file: 'zakhyst_vid_potopu.html', key: 'zakhyst_vid_potopu' },
-    { file: 'pozhezhna_bezpeka.html', key: 'pozhezhna_bezpeka' }
+    { file: 'pozhezhna_bezpeka.html', key: 'pozhezhna_bezpeka' },
+    { file: "aksesuary", key: 'aksesuary' }
 ];
 
 function initSwipeNavigation() {
