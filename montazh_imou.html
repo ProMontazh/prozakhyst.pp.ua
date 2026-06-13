@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Налаштування камер IMOU. Покрокова інструкція з підключення, встановлення та налаштування через мобільний додаток. ПРОЗАХИСТ Харків.">
+    <meta name="description" content="Налаштування камер IMOU. Покрокова інструкція з підключення, встановлення та налаштування через мобільний додаток IMOU Life. ПРОЗАХИСТ Харків.">
     <meta name="keywords" content="налаштування камери аймоу, підключення аймоу, встановлення IMOU камера, настройка IMOU, додаток IMOU Life, монтаж камери аймоу">
     <meta name="author" content="ПРОЗАХИСТ">
     <meta name="robots" content="index, follow">
@@ -14,7 +14,7 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
-    <title>Монтаж та налаштування Ajax | ПРОЗАХИСТ</title>
+    <title>Монтаж та налаштування IMOU | ПРОЗАХИСТ</title>
 
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -61,7 +61,7 @@
             text-align: center;
             font-size: 1.8em;
             font-weight: 700;
-            color:  #b0b0b0;
+            color: #b0b0b0;
             margin-bottom: 8px;
         }
 
@@ -72,69 +72,59 @@
             font-size: 1em;
             color: #666;
             margin-bottom: 40px;
-        } 
-      /* ===== БАННЕРИ AJAX / IMOU ===== */
-.hero-banner {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin-bottom: 25px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.45);
-}
+        }
 
-.hero-banner::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.1); /* затемнение банера */
-}
+        /* ===== БАНЕР ===== */
+        .hero-banner {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+        }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 30px 20px;
-}
+        .hero-banner::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.1);
+        }
 
-.hero-banner h2 {
-    color: #fff;
-    font-size: 2em;
-    margin-bottom: 10px;
-    font-weight: 700;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.6);
-}
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 30px 20px;
+        }
 
-.hero-banner p {
-    color: #ddd;
-    font-size: 1em;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-}
+        .hero-banner h2 {
+            color: #fff;
+            font-size: 2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+        }
 
-.ajax-banner {
-    background-image: url('/images/nastroyka_ajax.jpg');
-}
+        .imou-banner {
+            background-image: url('/images/nastroyka_imou.png');
+        }
 
-.imou-banner {
-    background-image: url('/images/nastroyka_imou.png');
-}
+        @media (max-width: 768px) {
+            .hero-banner {
+                min-height: 190px;
+                margin: -18px -14px 20px;
+                border-radius: 0;
+            }
+            .hero-banner h2 { font-size: 1.4em; }
+        }
 
-@media (max-width: 768px) {
-    .hero-banner {
-        min-height: 190px;
-        margin: -18px -14px 20px;
-        border-radius: 0;
-  }
-    .hero-banner h2 {
-        font-size: 1.4em;
-    }
-}
         /* ===== СЕКЦІЇ ===== */
         .section {
             background: #1a1a1a;
@@ -149,24 +139,12 @@
             display: flex;
             align-items: center;
             gap: 14px;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
             padding-bottom: 14px;
             border-bottom: 1px solid #333;
         }
 
-        .section-brand-logo {
-            width: 48px;
-            height: 48px;
-            border-radius: 8px;
-            object-fit: contain;
-            background: #222;
-            padding: 4px;
-            flex-shrink: 0;
-        }
-
-        .section-brand-title {
-            flex: 1;
-        }
+        .section-brand-title { flex: 1; }
 
         .section-brand-title h2 {
             font-size: 1.25em;
@@ -180,15 +158,44 @@
             color: #666;
         }
 
+        /* ===== STORE BADGES ===== */
+        .store-badges {
+            display: flex;
+            gap: 14px;
+            margin-top: 4px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .store-badge {
+            display: inline-flex;
+            align-items: center;
+            background: transparent;
+            border: none;
+            padding: 0;
+            text-decoration: none;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .store-badge:hover {
+            opacity: 0.8;
+            transform: translateY(-2px);
+        }
+
+        .store-badge img {
+            height: 38px;
+            width: auto;
+            display: block;
+        }
+
         /* ===== КРОКИ ===== */
         .steps-list {
             list-style: none;
             padding: 0;
-            counter-reset: step-counter;
+            margin-top: 22px;
         }
 
         .step-item {
-            counter-increment: step-counter;
             display: flex;
             gap: 16px;
             padding: 14px 0;
@@ -222,39 +229,18 @@
 
         .step-content strong { color: #e0e0e0; }
 
-        .step-content a {
-            color: #64b5f6;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .step-content a:hover { color: #fff; }
-
-        /* ===== STORE BADGES ===== */
-        .store-badges {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-            flex-wrap: wrap;
-        }
-
-        .store-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #222;
-            border: 1px solid #444;
+        /* ===== TIP BOX ===== */
+        .tip-box {
+            background: rgba(100,181,246,0.06);
+            border-left: 4px solid #007bff;
             border-radius: 6px;
-            padding: 7px 14px;
-            text-decoration: none;
-            color: #e0e0e0;
-            font-size: 0.85em;
-            font-weight: 600;
-            transition: border-color 0.2s, color 0.2s;
+            padding: 12px 16px;
+            margin-top: 16px;
+            font-size: 0.88em;
+            color: #888;
         }
 
-        .store-badge:hover { border-color: #800000; color: #fff; }
-        .store-badge-icon { font-size: 1.2em; }
+        .tip-box strong { color: #64b5f6; }
 
         /* ===== SUPPORT BOX ===== */
         .support-box {
@@ -287,19 +273,6 @@
 
         .support-box a.phone-link:hover { color: #fff; }
 
-        /* ===== TIP BOX ===== */
-        .tip-box {
-            background: rgba(100,181,246,0.06);
-            border-left: 4px solid #007bff;
-            border-radius: 6px;
-            padding: 12px 16px;
-            margin-top: 16px;
-            font-size: 0.88em;
-            color: #888;
-        }
-
-        .tip-box strong { color: #64b5f6; }
-
         /* ===== КНОПКИ ===== */
         .buttons-row {
             display: flex;
@@ -328,23 +301,6 @@
             background: linear-gradient(145deg, #a00000, #c00000);
             transform: translateY(-2px);
         }
-
-        .btn-secondary {
-            display: inline-block;
-            background: #222;
-            border: 1px solid #444;
-            color: #b0b0b0;
-            padding: 13px 32px;
-            border-radius: 6px;
-            font-size: 1em;
-            font-weight: 600;
-            font-family: 'Open Sans', sans-serif;
-            text-decoration: none;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary:hover { border-color: #800000; color: #fff; }
 
         /* ===== FOOTER ===== */
         footer {
@@ -397,7 +353,8 @@
             .footer-links { grid-template-columns: 1fr; gap: 20px; text-align: center; }
             .footer-links .cat2, .footer-links .cat3 { padding-top: 0; }
             .buttons-row { flex-direction: column; align-items: center; }
-            .btn-primary, .btn-secondary { width: 100%; max-width: 320px; }
+            .btn-primary { width: 100%; max-width: 320px; }
+            .store-badge img { height: 34px; }
         }
 
         @media (max-width: 480px) {
@@ -448,73 +405,85 @@
             <h1 class="page-title"><span>Монтаж та налаштування IMOU</span></h1>
             <p class="page-subtitle">Покрокова інструкція з підключення камери</p>
 
-<!-- ===== IMOU ===== -->
+            <!-- ===== IMOU ===== -->
             <section class="section">
-               <div class="hero-banner imou-banner">
-    <div class="hero-content">
-        <h2>IMOU</h2>
-       <!-- <p>Додаток IMOU Life</p>-->
-    </div>
-</div>
 
+                <div class="hero-banner imou-banner">
+                    <div class="hero-content">
+                        <h2>IMOU</h2>
+                    </div>
+                </div>
+
+                <!-- Бейджі магазинів -->
                 <div class="store-badges">
-                    <a href="https://apps.apple.com/app/imou-life/id1458523272" target="_blank" rel="noopener noreferrer" class="store-badge">
-                        <span class="store-badge-icon">🍎</span> App Store
+                    <a href="https://apps.apple.com/app/imou-life/id1458523272"
+                       target="_blank" rel="noopener noreferrer" class="store-badge">
+                        <img src="/App_Store.png" alt="Завантажити IMOU Life в App Store">
                     </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.mm.android.smartlifeiot&hl=uk" target="_blank" rel="noopener noreferrer" class="store-badge">
-                        <span class="store-badge-icon">▶</span> Google Play
+                    <a href="https://play.google.com/store/apps/details?id=com.mm.android.smartlifeiot&hl=uk"
+                       target="_blank" rel="noopener noreferrer" class="store-badge">
+                        <img src="/Google_Play.png" alt="Завантажити IMOU Life в Google Play">
                     </a>
                 </div>
 
-                <ol class="steps-list" style="margin-top: 20px;">
+                <ol class="steps-list">
+
                     <li class="step-item">
                         <div class="step-number">1</div>
                         <div class="step-content">
-                            <strong>Завантажте додаток IMOU Life</strong> з App Store або Google Play.
+                            <strong>Завантажте додаток IMOU Life</strong> з App Store або Google Play та встановіть його на смартфон.
                         </div>
                     </li>
+
                     <li class="step-item">
                         <div class="step-number">2</div>
                         <div class="step-content">
                             Відкрийте додаток і <strong>зареєструйте новий обліковий запис</strong> або увійдіть, якщо ви вже маєте акаунт.
                         </div>
                     </li>
+
                     <li class="step-item">
                         <div class="step-number">3</div>
                         <div class="step-content">
                             Натисніть кнопку <strong>«Додати пристрій»</strong>.
                         </div>
                     </li>
+
                     <li class="step-item">
                         <div class="step-number">4</div>
                         <div class="step-content">
                             <strong>Виберіть вашу камеру IMOU</strong> зі списку моделей або скористайтесь автоматичним пошуком.
                         </div>
                     </li>
+
                     <li class="step-item">
                         <div class="step-number">5</div>
                         <div class="step-content">
                             <strong>Відскануйте QR-код</strong>, що знаходиться на задній панелі або знизу камери.
                         </div>
                     </li>
+
                     <li class="step-item">
                         <div class="step-number">6</div>
                         <div class="step-content">
                             Введіть <strong>назву вашої Wi-Fi мережі (2.4 ГГц) та пароль</strong> для підключення камери до інтернету.
                         </div>
                     </li>
+
                     <li class="step-item">
                         <div class="step-number">7</div>
                         <div class="step-content">
                             Дочекайтесь, поки <strong>камера підключиться до мережі</strong>. Індикатор на камері стане синім або зеленим.
                         </div>
                     </li>
+
                     <li class="step-item">
                         <div class="step-number">8</div>
                         <div class="step-content">
-                            Після успішного підключення ви зможете <strong>переглядати відео в реальному часі</strong>, налаштовувати детекцію руху та отримувати сповіщення.
+                            Після успішного підключення ви зможете <strong>переглядати відео в реальному часі</strong>, налаштовувати детекцію руху та отримувати сповіщення на смартфон.
                         </div>
                     </li>
+
                 </ol>
 
                 <div class="tip-box">
@@ -525,8 +494,10 @@
                     <p>Потрібна допомога з налаштуванням камери IMOU? Гаряча лінія підтримки:</p>
                     <a href="tel:0800217317" class="phone-link">☎ 0 800 217 317</a>
                 </div>
+
             </section>
- <!-- ===== КОНТАКТИ ===== -->
+
+            <!-- ===== КОНТАКТИ ===== -->
             <section class="section">
                 <div class="section-header" style="margin-bottom:16px;">
                     <div class="section-brand-title">
@@ -535,8 +506,7 @@
                     </div>
                 </div>
                 <p style="color:#b0b0b0; font-size:0.93em; line-height:1.7; margin-bottom:16px;">
-                    Якщо ви хочете, щоб систему безпеки встановили та налаштували фахівці — звертайтеся до нас. Ми допоможемо підібрати оптимальну конфігурацію, 
-                    встановимо обладнання та перевіримо роботу всіх пристроїв. Даємо гарантію на всі види робіт. Виїзд по Харкову.
+                    Якщо ви хочете, щоб камери встановили та налаштували фахівці — звертайтеся до нас. Ми допоможемо підібрати оптимальне місце встановлення, підключимо обладнання та перевіримо роботу системи. Даємо гарантію на всі види робіт. Виїзд по Харкову.
                 </p>
                 <div class="support-box">
                     <p>Монтаж:</p>
@@ -546,7 +516,6 @@
 
             <div class="buttons-row">
                 <a href="index.html" class="btn-primary">🛒 Перейти до каталогу</a>
-                
             </div>
 
         </div>
@@ -573,13 +542,12 @@
                     <a href="avtomatyzatsiia.html">Автоматизація Ajax</a>
                     <a href="zakhyst_vid_potopu.html">Захист від потопу Ajax</a>
                     <a href="pozhezhna_bezpeka.html">Пожежна безпека Ajax</a>
-                    <a href="aksesuary.html">Аксесуари</a>
                 </div>
                 <div class="info-col">
                     <h4>Інформація</h4>
                     <a href="dostavka.html">Доставка та оплата</a>
                     <a href="montazh_ajax.html">Монтаж та налаштування Ajax</a>
-                    <a href="montazh_imou.html">Монтаж та налаштування Imou</a>
+                    <a href="montazh_imou.html">Монтаж та налаштування IMOU</a>
                     <a href="garantiya.html">Гарантія та сервіс</a>
                 </div>
                 <div class="contacts-col">
