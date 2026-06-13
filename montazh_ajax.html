@@ -61,7 +61,7 @@
             text-align: center;
             font-size: 1.8em;
             font-weight: 700;
-            color:  #b0b0b0;
+            color: #b0b0b0;
             margin-bottom: 8px;
         }
 
@@ -72,69 +72,59 @@
             font-size: 1em;
             color: #666;
             margin-bottom: 40px;
-        } 
-      /* ===== БАННЕРИ AJAX / IMOU ===== */
-.hero-banner {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin-bottom: 25px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.45);
-}
+        }
 
-.hero-banner::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.1); /* затемнение банера */
-}
+        /* ===== БАНЕР ===== */
+        .hero-banner {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+        }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 30px 20px;
-}
+        .hero-banner::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.1);
+        }
 
-.hero-banner h2 {
-    color: #fff;
-    font-size: 2em;
-    margin-bottom: 10px;
-    font-weight: 700;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.6);
-}
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 30px 20px;
+        }
 
-.hero-banner p {
-    color: #ddd;
-    font-size: 1em;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-}
+        .hero-banner h2 {
+            color: #fff;
+            font-size: 2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+        }
 
-.ajax-banner {
-    background-image: url('/images/nastroyka_ajax.jpg');
-}
+        .ajax-banner {
+            background-image: url('/images/nastroyka_ajax.jpg');
+        }
 
-.imou-banner {
-    background-image: url('/images/nastroyka_imou.png');
-}
+        @media (max-width: 768px) {
+            .hero-banner {
+                min-height: 190px;
+                margin: -18px -14px 20px;
+                border-radius: 0;
+            }
+            .hero-banner h2 { font-size: 1.4em; }
+        }
 
-@media (max-width: 768px) {
-    .hero-banner {
-        min-height: 190px;
-        margin: -18px -14px 20px;
-        border-radius: 0;
-  }
-    .hero-banner h2 {
-        font-size: 1.4em;
-    }
-}
         /* ===== СЕКЦІЇ ===== */
         .section {
             background: #1a1a1a;
@@ -149,24 +139,12 @@
             display: flex;
             align-items: center;
             gap: 14px;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
             padding-bottom: 14px;
             border-bottom: 1px solid #333;
         }
 
-        .section-brand-logo {
-            width: 48px;
-            height: 48px;
-            border-radius: 8px;
-            object-fit: contain;
-            background: #222;
-            padding: 4px;
-            flex-shrink: 0;
-        }
-
-        .section-brand-title {
-            flex: 1;
-        }
+        .section-brand-title { flex: 1; }
 
         .section-brand-title h2 {
             font-size: 1.25em;
@@ -180,15 +158,44 @@
             color: #666;
         }
 
+        /* ===== STORE BADGES ===== */
+        .store-badges {
+            display: flex;
+            gap: 14px;
+            margin-top: 4px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .store-badge {
+            display: inline-flex;
+            align-items: center;
+            background: transparent;
+            border: none;
+            padding: 0;
+            text-decoration: none;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .store-badge:hover {
+            opacity: 0.8;
+            transform: translateY(-2px);
+        }
+
+        .store-badge img {
+            height: 38px;
+            width: auto;
+            display: block;
+        }
+
         /* ===== КРОКИ ===== */
         .steps-list {
             list-style: none;
             padding: 0;
-            counter-reset: step-counter;
+            margin-top: 22px;
         }
 
         .step-item {
-            counter-increment: step-counter;
             display: flex;
             gap: 16px;
             padding: 14px 0;
@@ -222,39 +229,18 @@
 
         .step-content strong { color: #e0e0e0; }
 
-        .step-content a {
-            color: #64b5f6;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .step-content a:hover { color: #fff; }
-
-        /* ===== STORE BADGES ===== */
-        .store-badges {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-            flex-wrap: wrap;
-        }
-
-        .store-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #222;
-            border: 1px solid #444;
+        /* ===== TIP BOX ===== */
+        .tip-box {
+            background: rgba(100,181,246,0.06);
+            border-left: 4px solid #007bff;
             border-radius: 6px;
-            padding: 7px 14px;
-            text-decoration: none;
-            color: #e0e0e0;
-            font-size: 0.85em;
-            font-weight: 600;
-            transition: border-color 0.2s, color 0.2s;
+            padding: 12px 16px;
+            margin-top: 16px;
+            font-size: 0.88em;
+            color: #888;
         }
 
-        .store-badge:hover { border-color: #800000; color: #fff; }
-        .store-badge-icon { font-size: 1.2em; }
+        .tip-box strong { color: #64b5f6; }
 
         /* ===== SUPPORT BOX ===== */
         .support-box {
@@ -287,19 +273,6 @@
 
         .support-box a.phone-link:hover { color: #fff; }
 
-        /* ===== TIP BOX ===== */
-        .tip-box {
-            background: rgba(100,181,246,0.06);
-            border-left: 4px solid #007bff;
-            border-radius: 6px;
-            padding: 12px 16px;
-            margin-top: 16px;
-            font-size: 0.88em;
-            color: #888;
-        }
-
-        .tip-box strong { color: #64b5f6; }
-
         /* ===== КНОПКИ ===== */
         .buttons-row {
             display: flex;
@@ -328,23 +301,6 @@
             background: linear-gradient(145deg, #a00000, #c00000);
             transform: translateY(-2px);
         }
-
-        .btn-secondary {
-            display: inline-block;
-            background: #222;
-            border: 1px solid #444;
-            color: #b0b0b0;
-            padding: 13px 32px;
-            border-radius: 6px;
-            font-size: 1em;
-            font-weight: 600;
-            font-family: 'Open Sans', sans-serif;
-            text-decoration: none;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary:hover { border-color: #800000; color: #fff; }
 
         /* ===== FOOTER ===== */
         footer {
@@ -397,7 +353,8 @@
             .footer-links { grid-template-columns: 1fr; gap: 20px; text-align: center; }
             .footer-links .cat2, .footer-links .cat3 { padding-top: 0; }
             .buttons-row { flex-direction: column; align-items: center; }
-            .btn-primary, .btn-secondary { width: 100%; max-width: 320px; }
+            .btn-primary { width: 100%; max-width: 320px; }
+            .store-badge img { height: 34px; }
         }
 
         @media (max-width: 480px) {
@@ -450,96 +407,100 @@
 
             <!-- ===== AJAX ===== -->
             <section class="section">
-               <div class="hero-banner ajax-banner">
-    <div class="hero-content">
-        <h2>AJAX</h2>
-       <!-- <p>Додаток Ajax Security</p>-->
-    </div>
-</div>
 
+                <div class="hero-banner ajax-banner">
+                    <div class="hero-content">
+                        <h2>AJAX</h2>
+                    </div>
+                </div>
+
+                <!-- Бейджі магазинів -->
                 <div class="store-badges">
-                    <a href="https://apps.apple.com/us/app/ajax-security-system/id1063166247" target="_blank" rel="noopener noreferrer" class="store-badge">
-                        <span class="store-badge-icon">🍎</span> App Store
+                    <a href="https://apps.apple.com/us/app/ajax-security-system/id1063166247"
+                       target="_blank" rel="noopener noreferrer" class="store-badge">
+                        <img src="/App_Store.png" alt="Завантажити Ajax Security в App Store">
                     </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.ajaxsystems" target="_blank" rel="noopener noreferrer" class="store-badge">
-                        <span class="store-badge-icon">▶</span> Google Play
+                    <a href="https://play.google.com/store/apps/details?id=com.ajaxsystems"
+                       target="_blank" rel="noopener noreferrer" class="store-badge">
+                        <img src="/Google_Play.png" alt="Завантажити Ajax Security в Google Play">
                     </a>
                 </div>
 
-               <ol class="steps-list" style="margin-top: 20px;">
+                <ol class="steps-list">
 
-    <li class="step-item">
-        <div class="step-number">1</div>
-        <div class="step-content">
-            <strong>Завантажте додаток Ajax Security</strong> з App Store або Google Play та встановіть його на смартфон.
-        </div>
-    </li>
+                    <li class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <strong>Завантажте додаток Ajax Security</strong> з App Store або Google Play та встановіть його на смартфон.
+                        </div>
+                    </li>
 
-    <li class="step-item">
-        <div class="step-number">2</div>
-        <div class="step-content">
-            <strong>Створіть обліковий запис Ajax</strong> або увійдіть у вже існуючий. Для реєстрації вкажіть номер телефону, email та пароль.
-        </div>
-    </li>
+                    <li class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <strong>Створіть обліковий запис Ajax</strong> або увійдіть у вже існуючий. Для реєстрації вкажіть номер телефону, email та пароль.
+                        </div>
+                    </li>
 
-    <li class="step-item">
-        <div class="step-number">3</div>
-        <div class="step-content">
-            <strong>Підключіть хаб до роутера</strong> за допомогою Ethernet-кабелю та увімкніть його в розетку. Дочекайтесь, поки індикатор на хабі загориться білим або зеленим кольором.
-        </div>
-    </li>
+                    <li class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <strong>Підключіть хаб до роутера</strong> за допомогою Ethernet-кабелю та увімкніть його в розетку. Дочекайтесь, поки індикатор на хабі загориться білим або зеленим кольором.
+                        </div>
+                    </li>
 
-    <li class="step-item">
-        <div class="step-number">4</div>
-        <div class="step-content">
-            У додатку перейдіть у розділ <strong>«Простори»</strong> та натисніть <strong>«Додати простір»</strong>. Вкажіть назву об’єкта — наприклад «Будинок», «Квартира» або «Офіс».
-            <strong>Створіть кімнати</strong> для зручного керування системою — наприклад «Коридор», «Кухня», «Спальня» або «Гараж».
-        </div>
-    </li>
+                    <li class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            У додатку перейдіть у розділ <strong>«Простори»</strong> та натисніть <strong>«Додати простір»</strong>. Вкажіть назву об'єкта — наприклад «Будинок», «Квартира» або «Офіс».
+                            <strong>Створіть кімнати</strong> для зручного керування — наприклад «Коридор», «Кухня», «Спальня» або «Гараж».
+                        </div>
+                    </li>
 
-    <li class="step-item">
-        <div class="step-number">5</div>
-        <div class="step-content">
-            <strong>Додайте хаб у систему</strong>, відсканувавши QR-код на корпусі пристрою або на його упаковці через додаток Ajax Security.
-        </div>
-    </li>
+                    <li class="step-item">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <strong>Додайте хаб у систему</strong>, відсканувавши QR-код на корпусі пристрою або на його упаковці через додаток Ajax Security.
+                        </div>
+                    </li>
 
-    <li class="step-item">
-        <div class="step-number">6</div>
-        <div class="step-content">
-            <strong>Додайте датчики та пристрої</strong>, обравши пункт «Додати пристрій» у додатку. Відскануйте QR-код кожного пристрою та призначте його до потрібної кімнати.
-        </div>
-    </li>
+                    <li class="step-item">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <strong>Додайте датчики та пристрої</strong>, обравши пункт «Додати пристрій» у додатку. Відскануйте QR-код кожного пристрою та призначте його до потрібної кімнати.
+                        </div>
+                    </li>
 
-    <li class="step-item">
-        <div class="step-number">7</div>
-        <div class="step-content">
-            <strong>Перевірте рівень сигналу</strong> та працездатність усіх пристроїв у системі. За потреби змініть місце встановлення датчиків.
-        </div>
-    </li>
+                    <li class="step-item">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <strong>Перевірте рівень сигналу</strong> та працездатність усіх пристроїв у системі. За потреби змініть місце встановлення датчиків.
+                        </div>
+                    </li>
 
-    <li class="step-item">
-        <div class="step-number">8</div>
-        <div class="step-content">
-            <strong>Налаштуйте сповіщення та користувачів</strong>. Ви можете додати членів родини або співробітників та надати їм доступ до системи.
-        </div>
-    </li>
+                    <li class="step-item">
+                        <div class="step-number">8</div>
+                        <div class="step-content">
+                            <strong>Налаштуйте сповіщення та користувачів</strong>. Ви можете додати членів родини або співробітників та надати їм доступ до системи.
+                        </div>
+                    </li>
 
-    <li class="step-item">
-        <div class="step-number">9</div>
-        <div class="step-content">
-            <strong>Протестуйте систему</strong>: активуйте режим охорони та перевірте, чи надходять сповіщення на смартфон при спрацюванні датчиків.
-        </div>
-    </li>
+                    <li class="step-item">
+                        <div class="step-number">9</div>
+                        <div class="step-content">
+                            <strong>Протестуйте систему</strong>: активуйте режим охорони та перевірте, чи надходять сповіщення на смартфон при спрацюванні датчиків.
+                        </div>
+                    </li>
 
-    <li class="step-item">
-        <div class="step-number">10</div>
-        <div class="step-content">
-            Після завершення налаштування ви зможете <strong>керувати системою Ajax зі смартфона</strong>, отримувати миттєві сповіщення та контролювати кожне приміщення в режимі реального часу.
-        </div>
-    </li>
+                    <li class="step-item">
+                        <div class="step-number">10</div>
+                        <div class="step-content">
+                            Після завершення налаштування ви зможете <strong>керувати системою Ajax зі смартфона</strong>, отримувати миттєві сповіщення та контролювати кожне приміщення в режимі реального часу.
+                        </div>
+                    </li>
 
-</ol>
+                </ol>
+
                 <div class="tip-box">
                     <strong>💡 Порада:</strong> розташовуйте датчики на відстані не більше 1700 м від хаба (у відкритому просторі). За наявності перешкод (бетонні стіни, перекриття) використовуйте ретранслятор Ajax ReX.
                 </div>
@@ -548,9 +509,9 @@
                     <p>Виникли труднощі з налаштуванням? Телефонуйте на гарячу лінію Ajax Systems:</p>
                     <a href="tel:0800331911" class="phone-link">☎ 0 800 331 911</a>
                 </div>
+
             </section>
 
-        
             <!-- ===== КОНТАКТИ ===== -->
             <section class="section">
                 <div class="section-header" style="margin-bottom:16px;">
@@ -560,8 +521,7 @@
                     </div>
                 </div>
                 <p style="color:#b0b0b0; font-size:0.93em; line-height:1.7; margin-bottom:16px;">
-                    Якщо ви хочете, щоб систему безпеки встановили та налаштували фахівці — звертайтеся до нас. Ми допоможемо підібрати оптимальну конфігурацію, 
-                    встановимо обладнання та перевіримо роботу всіх пристроїв. Даємо гарантію на всі види робіт. Виїзд по Харкову.
+                    Якщо ви хочете, щоб систему безпеки встановили та налаштували фахівці — звертайтеся до нас. Ми допоможемо підібрати оптимальну конфігурацію, встановимо обладнання та перевіримо роботу всіх пристроїв. Даємо гарантію на всі види робіт. Виїзд по Харкову.
                 </p>
                 <div class="support-box">
                     <p>ПроМонтаж:</p>
@@ -571,13 +531,12 @@
 
             <div class="buttons-row">
                 <a href="index.html" class="btn-primary">🛒 Перейти до каталогу</a>
-                
             </div>
 
         </div>
     </main>
 
-     <!-- FOOTER -->
+    <!-- FOOTER -->
     <footer role="contentinfo">
         <div class="footer-wrapper">
             <div class="footer-links">
@@ -598,13 +557,12 @@
                     <a href="avtomatyzatsiia.html">Автоматизація Ajax</a>
                     <a href="zakhyst_vid_potopu.html">Захист від потопу Ajax</a>
                     <a href="pozhezhna_bezpeka.html">Пожежна безпека Ajax</a>
-                    <a href="aksesuary.html">Аксесуари</a>
                 </div>
                 <div class="info-col">
                     <h4>Інформація</h4>
                     <a href="dostavka.html">Доставка та оплата</a>
                     <a href="montazh_ajax.html">Монтаж та налаштування Ajax</a>
-                    <a href="montazh_imou.html">Монтаж та налаштування Imou</a>
+                    <a href="montazh_imou.html">Монтаж та налаштування IMOU</a>
                     <a href="garantiya.html">Гарантія та сервіс</a>
                 </div>
                 <div class="contacts-col">
