@@ -115,7 +115,39 @@
         .ajax-banner {
             background-image: url('/images/nastroyka_ajax.jpg');
         }
+/* ===== ВСТУПНИЙ ТЕКСТ ===== */
+.intro-text {
+    margin: 25px 0 30px;
+    padding: 24px 28px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+    border: 1px solid #2f2f2f;
+    border-left: 4px solid #800000;
+    border-radius: 10px;
+    color: #bdbdbd;
+    line-height: 1.85;
+    font-size: 0.98em;
+}
 
+.intro-text p {
+    margin-bottom: 16px;
+}
+
+.intro-text p:last-child {
+    margin-bottom: 0;
+}
+
+.intro-text strong {
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .intro-text {
+        padding: 18px;
+        font-size: 0.93em;
+        line-height: 1.75;
+        margin-bottom: 25px;
+    }
+}
         @media (max-width: 768px) {
             .hero-banner {
                 min-height: 190px;
