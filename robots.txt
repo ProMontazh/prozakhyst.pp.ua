@@ -7,4 +7,4 @@ Disallow: /tmp/
 Disallow: /private/
 Disallow: /checkout/
 
-Sitemap: https://xn--80anevegliy.pp.ua/sitemap.xml
+Sitemap: https://xn--80anevegliy.com.ua/sitemap.xml
