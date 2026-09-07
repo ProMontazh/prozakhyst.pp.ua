@@ -127,7 +127,7 @@
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://xn--80anevegliy.com.ua/karty_pam%27yati.html</loc>
+        <loc>https://xn--80anevegliy.com.ua/aksesuary.html</loc>
         <lastmod>2026-08-22</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -414,42 +414,49 @@
         <priority>0.8</priority>
     </url>
 
-    <url>
-        <loc>https://xn--80anevegliy.com.ua/vnutrishni_datchyky/ajax_keypad_white.html</loc>
+        <url>
+        <loc>https://xn--80anevegliy.com.ua/prystroi_keruvannia.html</loc>
         <lastmod>2026-08-22</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://xn--80anevegliy.com.ua/vnutrishni_datchyky/ajax_keypad_black.html</loc>
+        <loc>https://xn--80anevegliy.com.ua/prystroi_keruvannia/ajax_keypad_white.html</loc>
         <lastmod>2026-08-22</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://xn--80anevegliy.com.ua/vnutrishni_datchyky/ajax_keypad_plus_white.html</loc>
+        <loc>https://xn--80anevegliy.com.ua/prystroi_keruvannia/ajax_keypad_black.html</loc>
         <lastmod>2026-08-22</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://xn--80anevegliy.com.ua/vnutrishni_datchyky/ajax_keypad_plus_black.html</loc>
+        <loc>https://xn--80anevegliy.com.ua/prystroi_keruvannia/ajax_keypad_plus_white.html</loc>
         <lastmod>2026-08-22</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://xn--80anevegliy.com.ua/vnutrishni_datchyky/ajax_spacecontrol_white.html</loc>
+        <loc>https://xn--80anevegliy.com.ua/prystroi_keruvannia/ajax_keypad_plus_black.html</loc>
+        <lastmod>2026-08-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://xn--80anevegliy.com.ua/prystroi_keruvannia/ajax_spacecontrol_white.html</loc>
         <lastmod>2026-08-22</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://xn--80anevegliy.com.ua/vnutrishni_datchyky/ajax_spacecontrol_black.html</loc>
+        <loc>https://xn--80anevegliy.com.ua/prystroi_keruvannia/ajax_spacecontrol_black.html</loc>
         <lastmod>2026-08-22</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
