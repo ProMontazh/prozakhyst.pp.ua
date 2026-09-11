@@ -43,7 +43,9 @@
       "@type": "Product",
       "name": "IMOU IPC-S7XEP-10M0WED",
       "image": [
-        "https://xn--80anevegliy.com.ua/images/IPC-S7XEP-10M0WED_1.png"
+        "https://xn--80anevegliy.com.ua/images/IPC-S7XEP-10M0WED_1.png",
+        "https://xn--80anevegliy.com.ua/images/IPC-S7XEP-10M0WED_2.png",
+        "https://xn--80anevegliy.com.ua/images/IPC-S7XEP-10M0WED_3.jpg"
       ],
       "description": "Подвійна поворотна Wi-Fi камера IMOU IPC-S7XEP-10M0WED: 5МП+5МП, поворот 0~355° / нахил 0~90°, ІЧ+видиме підсвічування до 30 м, вбудована сирена та мікрофон, виявлення людей та транспорту (ШІ), Wi-Fi 6, microSD до 512 Гб.",
       "sku": "IPC-S7XEP-10M0WED",
@@ -149,11 +151,10 @@
     <div class="container">
         <h1 class="product-title">Подвійна поворотна камера IMOU Cruiser Dual 2 (IPC-S7XEP-10M0WED)</h1>
 
-        <!-- КАРУСЕЛЬ (одне зображення) -->
+        <!-- КАРУСЕЛЬ -->
         <div class="carousel-wrapper">
             <div class="carousel" id="carousel">
                 <img src="/images/IPC-S7XEP-10M0WED_1.png" alt="IMOU Cruiser Dual 2 IPC-S7XEP-10M0WED — подвійна поворотна камера" onclick="openModal(0)">
-                
                 <img src="/images/IPC-S7XEP-10M0WED_2.png" alt="IMOU Cruiser Dual 2 IPC-S7XEP-10M0WED — вигляд спереду" onclick="openModal(1)">
                 <img src="/images/IPC-S7XEP-10M0WED_3.jpg" alt="IMOU Cruiser Dual 2 IPC-S7XEP-10M0WED — зовнішній вигляд" onclick="openModal(2)">
                 <!-- Клон першого для безшовного циклу -->
@@ -238,10 +239,38 @@
 
         function nextImage() {
             if (totalSlides <= 1) return;
+            currentIndex++;
+            carousel.style.transition = 'transform 0.5s ease';
+            updateCarousel();
+            if (currentIndex === totalSlides) {
+                setTimeout(() => {
+                    carousel.style.transition = 'none';
+                    currentIndex = 0;
+                    updateCarousel();
+                }, 500);
+            }
         }
 
         function prevImage() {
             if (totalSlides <= 1) return;
+            if (currentIndex === 0) {
+                carousel.style.transition = 'none';
+                currentIndex = totalSlides;
+                updateCarousel();
+                setTimeout(() => {
+                    carousel.style.transition = 'transform 0.5s ease';
+                    currentIndex--;
+                    updateCarousel();
+                }, 20);
+            } else {
+                currentIndex--;
+                carousel.style.transition = 'transform 0.5s ease';
+                updateCarousel();
+            }
+        }
+
+        if (totalSlides > 1) {
+            setInterval(nextImage, 5000);
         }
 
         let modalIndex = 0;
@@ -263,15 +292,21 @@
 
         function nextModalImage() {
             if (totalSlides <= 1) return;
+            modalIndex = (modalIndex + 1) % images.length;
+            modalImg.src = images[modalIndex];
         }
 
         function prevModalImage() {
             if (totalSlides <= 1) return;
+            modalIndex = (modalIndex - 1 + images.length) % images.length;
+            modalImg.src = images[modalIndex];
         }
 
         document.addEventListener('keydown', (e) => {
             if (!modal.classList.contains('active')) return;
             if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowRight') nextModalImage();
+            if (e.key === 'ArrowLeft') prevModalImage();
         });
 
         let startX = 0;
@@ -280,13 +315,22 @@
             startX = e.touches[0].clientX;
         }, { passive: true });
 
+        carousel.addEventListener('touchend', e => {
+            const diff = e.changedTouches[0].clientX - startX;
+            if (Math.abs(diff) > 50) {
+                diff > 0 ? prevImage() : nextImage();
+            }
+        }, { passive: true });
+
         modal.addEventListener('touchstart', e => {
             startX = e.touches[0].clientX;
         }, { passive: true });
 
         modal.addEventListener('touchend', e => {
             const diff = e.changedTouches[0].clientX - startX;
-            if (Math.abs(diff) > 50) closeModal();
+            if (Math.abs(diff) > 50) {
+                diff > 0 ? prevModalImage() : nextModalImage();
+            }
         }, { passive: true });
     </script>
 
